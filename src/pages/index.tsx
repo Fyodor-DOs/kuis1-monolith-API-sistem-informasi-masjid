@@ -5,7 +5,15 @@ export default function HomePage() {
         <div>
             <h1>Selamat Datang di Sistem Manajemen Masjid</h1>
             <Link href="/users">
-                Lihat Daftar Pengguna
+                Daftar Pengguna
+            </Link>
+            <br />
+            <Link href="/kegiatan">
+                Daftar Kegiatan
+            </Link>
+            <br />
+            <Link href="/keuangan">
+                Data Keuangan
             </Link>
         </div>
     );

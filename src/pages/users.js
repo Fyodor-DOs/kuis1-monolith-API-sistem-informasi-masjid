@@ -4,42 +4,49 @@ export default function Users() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('/api/users')
-            .then((res) => res.json())
-            .then((data) => setUsers(data))
-            .catch((error) => console.error('Error fetching users:', error));
+        fetchUsers();
     }, []);
+
+    const fetchUsers = async () => {
+        try {
+            const res = await fetch('/api/users');
+            const data = await res.json();
+            setUsers(data);
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
+    };
+
+    const getLevelName = (level) => {
+        switch (level) {
+            case 1: return 'Admin';
+            case 2: return 'Takmir';
+            case 3: return 'Jamaah';
+            default: return 'Tidak Diketahui';
+        }
+    };
 
     return (
         <div>
             <h2>Daftar Users</h2>
-            <br />
-            
-            <table>
+            <table border="1" width="50%">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Role</th>
-                        
                     </tr>
                 </thead>
                 <tbody>
-                    {users.length > 0 ? (
-                        users.map((user) => (
-                            <tr key={user.id_user}>
-                                <td>{user.id_user}</td>
-                                <td>{user.nama}</td>
-                                <td>{user.email}</td>
-                                <td>{user.role}</td>
-                            </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="5">Tidak ada data</td>
+                    {users.map((user) => (
+                        <tr key={user.id_user}>
+                            <td>{user.id_user}</td>
+                            <td>{user.nama}</td>
+                            <td>{user.email}</td>
+                            <td>{getLevelName(user.level)}</td>
                         </tr>
-                    )}
+                    ))}
                 </tbody>
             </table>
         </div>
