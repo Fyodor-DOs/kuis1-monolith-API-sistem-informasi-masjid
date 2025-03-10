@@ -29,6 +29,7 @@ export default function Users() {
     return (
         <div>
             <h2>Daftar Users</h2>
+            <br></br>
             <table border="1" width="50%">
                 <thead>
                     <tr>
