@@ -12,6 +12,10 @@ export default function HomePage() {
                 Daftar Kegiatan
             </Link>
             <br />
+            <Link href="/donasi">
+                Daftar Donasi
+            </Link>
+            <br />
             <Link href="/keuangan">
                 Data Keuangan
             </Link>
